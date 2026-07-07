@@ -1,7 +1,6 @@
 "use client"
 
 import * as React from 'react'
-import { cn } from '@/lib/utils'
 import { TtfBadge } from '@/components/ui/ttf-badge'
 import { getTtfColor } from '@/lib/tokens/majestic-ttf'
 

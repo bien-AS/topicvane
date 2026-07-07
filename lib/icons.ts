@@ -12,7 +12,6 @@ import {
   Search,
   Radar,
   Database,
-  Waypoints,
   // Nav — Build
   FolderKanban,
   Globe,
@@ -55,7 +54,6 @@ import {
   CircleCheck,
   CircleAlert,
   TriangleAlert,
-  CircleX,
   Loader2,
   Loader,
   // Theme
@@ -97,6 +95,8 @@ export const Icons = {
   blog: Newspaper,
   articles: FileText,
   // Support / Account
+  support: LifeBuoy,
+  account: Settings,
   tutorials: GraduationCap,
   requestFeature: Lightbulb,
   ticket: LifeBuoy,

@@ -96,7 +96,8 @@ export function DataTable<T>({
   const currentPage = Math.min(page, pageCount)
   const pageRows = sorted.slice((currentPage - 1) * perPage, currentPage * perPage)
 
-  React.useEffect(() => setPage(1), [query, perPage, sort])
+  // eslint-disable-next-line react-hooks/set-state-in-effect
+  React.useEffect(() => { setPage(1) }, [query, perPage, sort])
 
   const emit = (next: Set<string>) => {
     setSelected(next)
@@ -118,7 +119,7 @@ export function DataTable<T>({
   }
   const toggleRow = (id: string) => {
     const next = new Set(selected)
-    next.has(id) ? next.delete(id) : next.add(id)
+    if (next.has(id)) { next.delete(id) } else { next.add(id) }
     emit(next)
   }
 
