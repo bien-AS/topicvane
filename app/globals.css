@@ -4,12 +4,21 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/*
+  TopicVane design tokens — source of truth is DESIGN.md + tailwind.config.ts
+  from as-topicvane-v2 (the established design system).
+  Direction: Refined Light (Stripe-grade). Light-first, dark is a full companion.
+  Single accent = TopicVane Blue #1E40AF. Semantic status colors only.
+  The Majestic 16-color TTF palette lives in lib/tokens/majestic-ttf.ts (data marks only),
+  never in UI chrome here.
+*/
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-sans);
   --font-mono: var(--font-geist-mono);
-  --font-heading: var(--font-sans);
+  --font-heading: var(--font-heading);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -27,6 +36,13 @@
   --color-input: var(--input);
   --color-border: var(--border);
   --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-info: var(--info);
+  --color-info-foreground: var(--info-foreground);
   --color-accent-foreground: var(--accent-foreground);
   --color-accent: var(--accent);
   --color-muted-foreground: var(--muted-foreground);
@@ -39,82 +55,129 @@
   --color-popover: var(--popover);
   --color-card-foreground: var(--card-foreground);
   --color-card: var(--card);
-  --radius-sm: calc(var(--radius) * 0.6);
-  --radius-md: calc(var(--radius) * 0.8);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) * 1.4);
-  --radius-2xl: calc(var(--radius) * 1.8);
-  --radius-3xl: calc(var(--radius) * 2.2);
-  --radius-4xl: calc(var(--radius) * 2.6);
+  /* Base radius 8px; 6/8/12/16 scale (00_FOUNDATION). */
+  --radius-sm: calc(var(--radius) - 2px);
+  --radius-md: var(--radius);
+  --radius-lg: calc(var(--radius) + 4px);
+  --radius-xl: calc(var(--radius) + 8px);
+  --radius-2xl: calc(var(--radius) * 2);
 }
 
+/* ---- Light (primary design) ------------------------------------------------ */
 :root {
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.87 0 0);
-  --chart-2: oklch(0.556 0 0);
-  --chart-3: oklch(0.439 0 0);
-  --chart-4: oklch(0.371 0 0);
-  --chart-5: oklch(0.269 0 0);
-  --radius: 0.625rem;
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+  --radius: 0.5rem; /* 8px */
+
+  /* Surfaces */
+  --background: #f6f7fb; /* Canvas */
+  --foreground: #0e1422; /* Ink */
+  --card: #ffffff; /* Surface */
+  --card-foreground: #0e1422;
+  --popover: #ffffff;
+  --popover-foreground: #0e1422;
+
+  /* Brand — the single interaction/brand accent */
+  --primary: #1e40af; /* TopicVane Blue */
+  --primary-foreground: #ffffff;
+
+  /* Neutral surfaces & text */
+  --secondary: #f1f3f7;
+  --secondary-foreground: #0e1422;
+  --muted: #f1f3f7;
+  --muted-foreground: #5a6577; /* Slate */
+  --accent: #f0f3ff; /* blue tint — hover pills, active nav */
+  --accent-foreground: #1e40af;
+
+  /* Hairlines */
+  --border: #ecedf3;
+  --input: #ecedf3;
+  --ring: #1e40af;
+
+  /* Elevation — refined-light: surface+hairline first, soft shadow second */
+  --elev-1: 0 1px 2px rgba(16,20,34,0.04);
+  --elev-2: 0 1px 2px rgba(16,20,34,0.04), 0 12px 28px -18px rgba(16,20,34,0.18);
+  --elev-3: 0 8px 24px -8px rgba(16,20,34,0.16);
+  --elev-primary: 0 6px 16px -6px rgba(30,64,175,0.45);
+
+  /* Semantic status — never decorative */
+  --destructive: #dc2626;
+  --destructive-foreground: #ffffff;
+  --success: #0f9d58;
+  --success-foreground: #ffffff;
+  --warning: #d97706;
+  --warning-foreground: #ffffff;
+  --info: #2563eb;
+  --info-foreground: #ffffff;
+
+  /* Restrained blue-anchored chart scale (system charts; category charts use Majestic) */
+  --chart-1: #1e40af;
+  --chart-2: #2563eb;
+  --chart-3: #60a5fa;
+  --chart-4: #93c5fd;
+  --chart-5: #c7d2fe;
+
+  /* App shell */
+  --sidebar: #ffffff;
+  --sidebar-foreground: #0e1422;
+  --sidebar-primary: #1e40af;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #f0f3ff; /* active = accent pill */
+  --sidebar-accent-foreground: #1e40af;
+  --sidebar-border: #ecedf3;
+  --sidebar-ring: #1e40af;
 }
 
+/* ---- Dark (full companion: deep-navy canvas, lifted blue for AA) ----------- */
 .dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.87 0 0);
-  --chart-2: oklch(0.556 0 0);
-  --chart-3: oklch(0.439 0 0);
-  --chart-4: oklch(0.371 0 0);
-  --chart-5: oklch(0.269 0 0);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
+  --background: #0a0d14; /* deep navy canvas */
+  --foreground: #eff1f5;
+  --card: #11151d; /* lifted surface */
+  --card-foreground: #eff1f5;
+  --popover: #151923;
+  --popover-foreground: #eff1f5;
+
+  --primary: #5b89f5; /* lifted blue for AA on dark */
+  --primary-foreground: #0c1322;
+
+  --secondary: #1f232e;
+  --secondary-foreground: #eff1f5;
+  --muted: #1f232e;
+  --muted-foreground: #96a0b0;
+  --accent: #1a2442; /* blue-tinted active surface */
+  --accent-foreground: #a8c1fa;
+
+  --border: #242932;
+  --input: #292d38;
+  --ring: #5b89f5;
+
+  /* Dark elevation: deeper ambient + faint top highlight via border */
+  --elev-1: 0 1px 2px rgba(0,0,0,0.4);
+  --elev-2: 0 1px 2px rgba(0,0,0,0.4), 0 14px 30px -18px rgba(0,0,0,0.7);
+  --elev-3: 0 10px 30px -10px rgba(0,0,0,0.7);
+  --elev-primary: 0 6px 18px -6px rgba(40,90,230,0.55);
+
+  --destructive: #e44e4e;
+  --destructive-foreground: #ffffff;
+  --success: #32bd7a;
+  --success-foreground: #ffffff;
+  --warning: #f4992a;
+  --warning-foreground: #0c1322;
+  --info: #608ef0;
+  --info-foreground: #0c1322;
+
+  --chart-1: #608ef0;
+  --chart-2: #5b89f5;
+  --chart-3: #2563eb;
+  --chart-4: #93c5fd;
+  --chart-5: #c7d2fe;
+
+  --sidebar: #0a0d14;
+  --sidebar-foreground: #eff1f5;
+  --sidebar-primary: #5b89f5;
+  --sidebar-primary-foreground: #0c1322;
+  --sidebar-accent: #1a2442;
+  --sidebar-accent-foreground: #a8c1fa;
+  --sidebar-border: #242932;
+  --sidebar-ring: #5b89f5;
 }
 
 @layer base {
@@ -126,5 +189,17 @@
   }
   html {
     @apply font-sans;
+  }
+  /* Headings in Plus Jakarta Sans (see app/layout.tsx). */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading), var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  }
+}
+
+@layer utilities {
+  /* Tabular numerals — mandatory on every figure (00_FOUNDATION). */
+  .tabular {
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: "tnum";
   }
 }
