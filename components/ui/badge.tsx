@@ -1,6 +1,6 @@
-import * as React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { Slot } from "radix-ui";
+import * as React from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -14,21 +14,17 @@ const badgeVariants = cva(
     variants: {
       variant: {
         neutral: "border-border bg-muted text-muted-foreground",
-        success:
-          "border-transparent bg-success/10 text-success dark:bg-success/15",
-        error:
-          "border-transparent bg-destructive/10 text-destructive dark:bg-destructive/15",
-        warning:
-          "border-transparent bg-warning/10 text-warning dark:bg-warning/15",
+        success: "border-transparent bg-success/10 text-success dark:bg-success/15",
+        error: "border-transparent bg-destructive/10 text-destructive dark:bg-destructive/15",
+        warning: "border-transparent bg-warning/10 text-warning dark:bg-warning/15",
         info: "border-transparent bg-info/10 text-info dark:bg-info/15",
-        primary:
-          "border-transparent bg-primary/10 text-primary dark:bg-primary/15",
+        primary: "border-transparent bg-primary/10 text-primary dark:bg-primary/15",
       },
     },
     defaultVariants: {
       variant: "neutral",
     },
-  }
+  },
 );
 
 const dotColor: Record<NonNullable<BadgeProps["variant"]>, string> = {

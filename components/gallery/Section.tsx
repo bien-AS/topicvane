@@ -1,6 +1,6 @@
-"use client"
+"use client";
 
-import * as React from 'react'
+import * as React from "react";
 
 /** Gallery building blocks. Each component group lives in its own file under
  *  src/gallery/ and is composed by Gallery.tsx — so the living gallery stays
@@ -12,9 +12,9 @@ export function Section({
   subtitle,
   children,
 }: {
-  title: string
-  subtitle?: string
-  children: React.ReactNode
+  title: string;
+  subtitle?: string;
+  children: React.ReactNode;
 }) {
   return (
     <section className="mb-8">
@@ -24,7 +24,7 @@ export function Section({
       </div>
       <div className="rounded-lg border border-border bg-card p-6 shadow-e2">{children}</div>
     </section>
-  )
+  );
 }
 
 /** A batch/group heading that separates major sections of the gallery. */
@@ -33,9 +33,9 @@ export function SectionGroup({
   title,
   description,
 }: {
-  eyebrow?: string
-  title: string
-  description?: string
+  eyebrow?: string;
+  title: string;
+  description?: string;
 }) {
   return (
     <div className="mb-5 mt-4 border-t border-border pt-8">
@@ -44,8 +44,10 @@ export function SectionGroup({
           {eyebrow}
         </div>
       )}
-      <h2 className="mt-1 font-heading text-xl font-extrabold tracking-tight text-foreground">{title}</h2>
+      <h2 className="mt-1 font-heading text-xl font-extrabold tracking-tight text-foreground">
+        {title}
+      </h2>
       {description && <p className="mt-1 max-w-2xl text-sm text-muted-foreground">{description}</p>}
     </div>
-  )
+  );
 }

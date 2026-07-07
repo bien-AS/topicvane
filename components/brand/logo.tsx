@@ -32,7 +32,10 @@ export function Mark({ size = 24, className, ...props }: MarkProps) {
         strokeWidth={2}
         strokeLinecap="round"
       />
-      <path d="M6 4.5 19 8.5 6 12.5Z" className="fill-primary" />
+      <path
+        d="M6 4.5 19 8.5 6 12.5Z"
+        className="fill-primary"
+      />
     </svg>
   );
 }
@@ -45,17 +48,12 @@ interface LogoProps extends React.HTMLAttributes<HTMLSpanElement> {
 }
 
 /** Full wordmark: mark + "Topic" (slate) + "Vane" (blue). */
-export function Logo({
-  withMark = true,
-  markSize = 22,
-  className,
-  ...props
-}: LogoProps) {
+export function Logo({ withMark = true, markSize = 22, className, ...props }: LogoProps) {
   return (
     <span
       className={cn(
         "inline-flex items-center gap-2 font-heading text-lg font-extrabold tracking-tight select-none",
-        className
+        className,
       )}
       {...props}
     >

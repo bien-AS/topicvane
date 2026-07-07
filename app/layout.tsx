@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans, Inter, Geist_Mono } from "next/font/google";
+import { Geist_Mono, Inter, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
-import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/components/theme-provider";
-import { TooltipProvider } from "@/components/ui/tooltip";
 import { ToastProvider } from "@/components/ui/toast";
+import { TooltipProvider } from "@/components/ui/tooltip";
+import { cn } from "@/lib/utils";
 
 // Body, tables, forms, and ALL numbers (00_FOUNDATION).
 const inter = Inter({
@@ -47,10 +47,11 @@ export default function RootLayout({
         "h-full antialiased font-sans",
         inter.variable,
         plusJakarta.variable,
-        geistMono.variable
+        geistMono.variable,
       )}
     >
       <head>
+        {/* biome-ignore lint/security/noDangerouslySetInnerHtml: anti-flash-of-wrong-theme script */}
         <script dangerouslySetInnerHTML={{ __html: noFlashScript }} />
       </head>
       <body className="min-h-full flex flex-col">

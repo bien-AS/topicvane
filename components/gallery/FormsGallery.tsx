@@ -1,40 +1,40 @@
-"use client"
+"use client";
 
-import * as React from 'react'
-import { Section } from './Section'
-import { cn } from '@/lib/utils'
-import { Card } from '@/components/ui/card'
-import { Button } from '@/components/ui/button'
-import { Textarea } from '@/components/ui/textarea'
-import { Switch } from '@/components/ui/switch'
-import { Slider } from '@/components/ui/slider'
-import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
-import { FormField } from '@/components/ui/form-field'
-import { Label } from '@/components/ui/label'
+import * as React from "react";
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import { FormField } from "@/components/ui/form-field";
+import { Label } from "@/components/ui/label";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import {
   Select,
-  SelectTrigger,
-  SelectValue,
   SelectContent,
+  SelectGroup,
   SelectItem,
   SelectLabel,
-  SelectGroup,
-} from '@/components/ui/select'
-import { Icons } from '@/lib/icons'
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Slider } from "@/components/ui/slider";
+import { Switch } from "@/components/ui/switch";
+import { Textarea } from "@/components/ui/textarea";
+import { Icons } from "@/lib/icons";
+import { cn } from "@/lib/utils";
+import { Section } from "./Section";
 
 const LENGTHS = [
-  { value: 'short', label: 'Short', desc: '~800 words' },
-  { value: 'standard', label: 'Standard', desc: '~1,500 words' },
-  { value: 'long', label: 'Long', desc: '~2,500 words' },
-]
+  { value: "short", label: "Short", desc: "~800 words" },
+  { value: "standard", label: "Standard", desc: "~1,500 words" },
+  { value: "long", label: "Long", desc: "~2,500 words" },
+];
 
 function BlogSetupForm() {
-  const [model, setModel] = React.useState('sonnet')
-  const [language, setLanguage] = React.useState('en')
-  const [count, setCount] = React.useState([30])
-  const [length, setLength] = React.useState('standard')
-  const [varyAnchors, setVaryAnchors] = React.useState(true)
-  const [faqSchema, setFaqSchema] = React.useState(false)
+  const [model, setModel] = React.useState("sonnet");
+  const [language, setLanguage] = React.useState("en");
+  const [count, setCount] = React.useState([30]);
+  const [length, setLength] = React.useState("standard");
+  const [varyAnchors, setVaryAnchors] = React.useState(true);
+  const [faqSchema, setFaqSchema] = React.useState(false);
 
   return (
     <Card className="mx-auto max-w-xl p-6">
@@ -47,8 +47,15 @@ function BlogSetupForm() {
 
       <div className="space-y-5">
         <div className="grid gap-5 sm:grid-cols-2">
-          <FormField label="AI model" htmlFor="model" required>
-            <Select value={model} onValueChange={setModel}>
+          <FormField
+            label="AI model"
+            htmlFor="model"
+            required
+          >
+            <Select
+              value={model}
+              onValueChange={setModel}
+            >
               <SelectTrigger id="model">
                 <SelectValue />
               </SelectTrigger>
@@ -67,8 +74,14 @@ function BlogSetupForm() {
             </Select>
           </FormField>
 
-          <FormField label="Language" htmlFor="lang">
-            <Select value={language} onValueChange={setLanguage}>
+          <FormField
+            label="Language"
+            htmlFor="lang"
+          >
+            <Select
+              value={language}
+              onValueChange={setLanguage}
+            >
               <SelectTrigger id="lang">
                 <SelectValue />
               </SelectTrigger>
@@ -86,24 +99,38 @@ function BlogSetupForm() {
           label={
             <span className="flex w-full items-center justify-between">
               <span>Articles to generate</span>
-              <span className="font-heading text-[13px] font-bold tabular-nums text-foreground">{count[0]}</span>
+              <span className="font-heading text-[13px] font-bold tabular-nums text-foreground">
+                {count[0]}
+              </span>
             </span>
           }
           description="Reserves 1 pillar per subtopic; the rest are distributed as supporting articles."
         >
-          <Slider value={count} onValueChange={setCount} min={5} max={100} step={5} className="mt-1" />
+          <Slider
+            value={count}
+            onValueChange={setCount}
+            min={5}
+            max={100}
+            step={5}
+            className="mt-1"
+          />
         </FormField>
 
         <FormField label="Article length">
-          <RadioGroup value={length} onValueChange={setLength} className="grid grid-cols-3 gap-3">
+          <RadioGroup
+            value={length}
+            onValueChange={setLength}
+            className="grid grid-cols-3 gap-3"
+          >
             {LENGTHS.map((o) => (
+              // biome-ignore lint/a11y/noLabelWithoutControl: RadioGroupItem is wrapped inside label
               <label
                 key={o.value}
                 className={cn(
-                  'flex cursor-pointer flex-col gap-1 rounded-lg border p-3 transition-colors',
+                  "flex cursor-pointer flex-col gap-1 rounded-lg border p-3 transition-colors",
                   length === o.value
-                    ? 'border-primary bg-accent/50 ring-1 ring-primary'
-                    : 'border-border hover:border-muted-foreground/30'
+                    ? "border-primary bg-accent/50 ring-1 ring-primary"
+                    : "border-border hover:border-muted-foreground/30",
                 )}
               >
                 <span className="flex items-center justify-between">
@@ -120,16 +147,28 @@ function BlogSetupForm() {
           <div className="flex items-center justify-between gap-4">
             <div>
               <Label htmlFor="anchors">Vary anchor text</Label>
-              <p className="text-[12px] text-muted-foreground">Rotate exact / partial / branded anchors on internal links.</p>
+              <p className="text-[12px] text-muted-foreground">
+                Rotate exact / partial / branded anchors on internal links.
+              </p>
             </div>
-            <Switch id="anchors" checked={varyAnchors} onCheckedChange={setVaryAnchors} />
+            <Switch
+              id="anchors"
+              checked={varyAnchors}
+              onCheckedChange={setVaryAnchors}
+            />
           </div>
           <div className="flex items-center justify-between gap-4">
             <div>
               <Label htmlFor="faq">Include FAQ schema</Label>
-              <p className="text-[12px] text-muted-foreground">Add FAQ structured data to supporting articles.</p>
+              <p className="text-[12px] text-muted-foreground">
+                Add FAQ structured data to supporting articles.
+              </p>
             </div>
-            <Switch id="faq" checked={faqSchema} onCheckedChange={setFaqSchema} />
+            <Switch
+              id="faq"
+              checked={faqSchema}
+              onCheckedChange={setFaqSchema}
+            />
           </div>
         </div>
 
@@ -138,11 +177,17 @@ function BlogSetupForm() {
           htmlFor="citations"
           description="One URL per line — distributed contextually, capped at 2 per article."
         >
-          <Textarea id="citations" placeholder={'https://example.org/study\nhttps://another-source.com/report'} />
+          <Textarea
+            id="citations"
+            placeholder={"https://example.org/study\nhttps://another-source.com/report"}
+          />
         </FormField>
 
         <div className="flex items-center justify-end gap-2 border-t border-border pt-4">
-          <Button variant="ghost" size="sm">
+          <Button
+            variant="ghost"
+            size="sm"
+          >
             Back
           </Button>
           <Button size="sm">
@@ -151,12 +196,12 @@ function BlogSetupForm() {
         </div>
       </div>
     </Card>
-  )
+  );
 }
 
 /** Batch A5 — Forms & inputs. */
 export function FormsGallery() {
-  const [range, setRange] = React.useState([20, 60])
+  const [range, setRange] = React.useState([20, 60]);
 
   return (
     <>
@@ -167,22 +212,39 @@ export function FormsGallery() {
         <BlogSetupForm />
       </Section>
 
-      <Section title="Individual controls & states" subtitle="Switch · RadioGroup · Slider (range) · Textarea error">
+      <Section
+        title="Individual controls & states"
+        subtitle="Switch · RadioGroup · Slider (range) · Textarea error"
+      >
         <div className="grid gap-8 sm:grid-cols-2">
           <div className="space-y-4">
             <div className="flex items-center gap-3">
-              <Switch defaultChecked id="s1" />
+              <Switch
+                defaultChecked
+                id="s1"
+              />
               <Label htmlFor="s1">On</Label>
-              <Switch id="s2" className="ml-4" />
+              <Switch
+                id="s2"
+                className="ml-4"
+              />
               <Label htmlFor="s2">Off</Label>
-              <Switch disabled className="ml-4" />
+              <Switch
+                disabled
+                className="ml-4"
+              />
               <span className="text-[13px] text-muted-foreground">Disabled</span>
             </div>
 
-            <RadioGroup defaultValue="fresh" className="flex gap-6">
+            <RadioGroup
+              defaultValue="fresh"
+              className="flex gap-6"
+            >
+              {/* biome-ignore lint/a11y/noLabelWithoutControl: RadioGroupItem is wrapped inside label */}
               <label className="flex items-center gap-2 text-[13px]">
                 <RadioGroupItem value="fresh" /> Fresh index
               </label>
+              {/* biome-ignore lint/a11y/noLabelWithoutControl: RadioGroupItem is wrapped inside label */}
               <label className="flex items-center gap-2 text-[13px]">
                 <RadioGroupItem value="historic" /> Historic index
               </label>
@@ -195,7 +257,13 @@ export function FormsGallery() {
                   {range[0]}–{range[1]}
                 </span>
               </div>
-              <Slider value={range} onValueChange={setRange} min={0} max={100} step={1} />
+              <Slider
+                value={range}
+                onValueChange={setRange}
+                min={0}
+                max={100}
+                step={1}
+              />
             </div>
           </div>
 
@@ -204,10 +272,14 @@ export function FormsGallery() {
             htmlFor="notes"
             error="Notes must be under 500 characters."
           >
-            <Textarea id="notes" aria-invalid defaultValue={'This domain has a strong Business / Agriculture profile…'} />
+            <Textarea
+              id="notes"
+              aria-invalid
+              defaultValue={"This domain has a strong Business / Agriculture profile…"}
+            />
           </FormField>
         </div>
       </Section>
     </>
-  )
+  );
 }
