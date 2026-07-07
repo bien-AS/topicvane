@@ -25,7 +25,7 @@ function TtfBadge({
   className,
   ...props
 }: TtfBadgeProps) {
-  const { bg, text } = getTtfColor(topic);
+  const { hex, on } = getTtfColor(topic);
   const parent = getTtfParent(topic);
   const label = parentOnly ? parent ?? topic : topic;
 
@@ -37,12 +37,12 @@ function TtfBadge({
         "inline-flex items-center gap-1.5 rounded-md px-2 py-0.5 text-xs font-semibold font-heading whitespace-nowrap",
         className
       )}
-      style={{ backgroundColor: bg, color: text }}
+      style={{ backgroundColor: hex, color: on }}
       {...props}
     >
       <span className="max-w-[16ch] truncate">{label}</span>
       {value !== undefined && (
-        <span className="tabular font-bold" style={{ color: text }}>
+        <span className="tabular font-bold" style={{ color: on }}>
           {value}
         </span>
       )}

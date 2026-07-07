@@ -8,13 +8,15 @@
 import type { LucideIcon } from "lucide-react";
 import {
   // Nav — Research
-  LayoutGrid,
+  LayoutDashboard,
   Search,
   Radar,
+  Database,
   Waypoints,
   // Nav — Build
   FolderKanban,
   Globe,
+  Newspaper,
   FileText,
   // Nav — Support / Account
   GraduationCap,
@@ -32,16 +34,22 @@ import {
   ChevronRight,
   ChevronLeft,
   ChevronsUpDown,
+  ArrowRight,
   ArrowUpRight,
   ArrowUp,
   ArrowDown,
   MoreHorizontal,
   SlidersHorizontal,
+  Network,
+  Sparkles,
+  Zap,
+  Landmark,
   Filter,
   RefreshCw,
   Download,
   ExternalLink,
   Copy,
+  Bell,
   // Status & feedback
   Info,
   CircleCheck,
@@ -49,6 +57,7 @@ import {
   TriangleAlert,
   CircleX,
   Loader2,
+  Loader,
   // Theme
   Sun,
   Moon,
@@ -58,19 +67,34 @@ import {
   Link2,
   Star,
   Inbox,
+  Target,
+  Gauge,
+  // Editor toolbar
+  Bold,
+  Italic,
+  Heading2,
+  List,
+  Quote,
+  Pencil,
+  Trash2,
+  Calendar,
+  Clock,
 } from "lucide-react";
+import { Image as ImageIcon } from "lucide-react";
 
 export type { LucideIcon };
 
 export const Icons = {
   // Research
-  dashboard: LayoutGrid,
+  dashboard: LayoutDashboard,
   search: Search,
   domainScan: Radar,
-  trustFlow: Waypoints,
+  trustFlow: Radar,
+  domainInventory: Database,
   // Build
   projects: FolderKanban,
   websiteBuilder: Globe,
+  blog: Newspaper,
   articles: FileText,
   // Support / Account
   tutorials: GraduationCap,
@@ -87,6 +111,9 @@ export const Icons = {
   chevronDown: ChevronDown,
   chevronRight: ChevronRight,
   chevronLeft: ChevronLeft,
+  next: ArrowRight,
+  outbound: ArrowUpRight,
+  export: Download,
   sort: ChevronsUpDown,
   linkOut: ArrowUpRight,
   caretUp: ArrowUp,
@@ -98,22 +125,44 @@ export const Icons = {
   download: Download,
   external: ExternalLink,
   copy: Copy,
+  notifications: Bell,
+  // Data / domain context
+  delta: TrendingUp,
+  trendUp: TrendingUp,
+  trendDown: TrendingDown,
+  topicalMap: Network,
+  generate: Sparkles,
+  fresh: Zap,
+  historic: Landmark,
+  backlink: Link2,
+  star: Star,
+  target: Target,
+  gauge: Gauge,
+  calendar: Calendar,
+  clock: Clock,
   // Status
   info: Info,
   success: CircleCheck,
   warning: CircleAlert,
-  error: CircleX,
+  error: CircleAlert,
   alert: TriangleAlert,
   spinner: Loader2,
+  loading: Loader,
   // Theme
   sun: Sun,
   moon: Moon,
   // Data / domain
-  trendUp: TrendingUp,
-  trendDown: TrendingDown,
-  backlink: Link2,
-  star: Star,
   empty: Inbox,
+  // Editor toolbar
+  bold: Bold,
+  italic: Italic,
+  heading: Heading2,
+  list: List,
+  link: Link2,
+  image: ImageIcon,
+  quote: Quote,
+  edit: Pencil,
+  trash: Trash2,
 } satisfies Record<string, LucideIcon>;
 
 export type IconName = keyof typeof Icons;

@@ -1,0 +1,85 @@
+{
+  "description": "Majestic Topical Trust Flow \u2014 16 parent categories. Subtopics inherit parent hex. Split TTF string on ' / ', take first segment, look up here. Fixed DATA palette \u2014 never use on UI chrome.",
+  "categories": [
+    {
+      "parent": "Adult",
+      "hex": "#333333",
+      "text": "#FFFFFF"
+    },
+    {
+      "parent": "Arts",
+      "hex": "#FF6700",
+      "text": "#FFFFFF"
+    },
+    {
+      "parent": "Business",
+      "hex": "#C5C88E",
+      "text": "#000000"
+    },
+    {
+      "parent": "Computers",
+      "hex": "#DD3333",
+      "text": "#FFFFFF"
+    },
+    {
+      "parent": "Games",
+      "hex": "#557832",
+      "text": "#FFFFFF"
+    },
+    {
+      "parent": "Health",
+      "hex": "#000099",
+      "text": "#FFFFFF"
+    },
+    {
+      "parent": "Home",
+      "hex": "#DD9955",
+      "text": "#000000"
+    },
+    {
+      "parent": "News",
+      "hex": "#76D54B",
+      "text": "#000000"
+    },
+    {
+      "parent": "Recreation",
+      "hex": "#89C7CB",
+      "text": "#000000"
+    },
+    {
+      "parent": "Reference",
+      "hex": "#C84770",
+      "text": "#FFFFFF"
+    },
+    {
+      "parent": "Regional",
+      "hex": "#F582B9",
+      "text": "#000000"
+    },
+    {
+      "parent": "Science",
+      "hex": "#6BD39A",
+      "text": "#000000"
+    },
+    {
+      "parent": "Shopping",
+      "hex": "#660000",
+      "text": "#FFFFFF"
+    },
+    {
+      "parent": "Society",
+      "hex": "#7A69CD",
+      "text": "#FFFFFF"
+    },
+    {
+      "parent": "Sports",
+      "hex": "#55355D",
+      "text": "#FFFFFF"
+    },
+    {
+      "parent": "World",
+      "hex": "#557777",
+      "text": "#FFFFFF"
+    }
+  ]
+}

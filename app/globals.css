@@ -5,7 +5,8 @@
 @custom-variant dark (&:is(.dark *));
 
 /*
-  TopicVane design tokens — source of truth is 00_FOUNDATION.md.
+  TopicVane design tokens — source of truth is DESIGN.md + tailwind.config.ts
+  from as-topicvane-v2 (the established design system).
   Direction: Refined Light (Stripe-grade). Light-first, dark is a full companion.
   Single accent = TopicVane Blue #1E40AF. Semantic status colors only.
   The Majestic 16-color TTF palette lives in lib/tokens/majestic-ttf.ts (data marks only),
@@ -79,17 +80,23 @@
   --primary-foreground: #ffffff;
 
   /* Neutral surfaces & text */
-  --secondary: #eef0f6;
+  --secondary: #f1f3f7;
   --secondary-foreground: #0e1422;
-  --muted: #f0f1f7;
+  --muted: #f1f3f7;
   --muted-foreground: #5a6577; /* Slate */
-  --accent: #eef2fd; /* faint blue tint — hover pills, active nav */
+  --accent: #f0f3ff; /* blue tint — hover pills, active nav */
   --accent-foreground: #1e40af;
 
   /* Hairlines */
   --border: #ecedf3;
-  --input: #e2e4ee;
+  --input: #ecedf3;
   --ring: #1e40af;
+
+  /* Elevation — refined-light: surface+hairline first, soft shadow second */
+  --elev-1: 0 1px 2px rgba(16,20,34,0.04);
+  --elev-2: 0 1px 2px rgba(16,20,34,0.04), 0 12px 28px -18px rgba(16,20,34,0.18);
+  --elev-3: 0 8px 24px -8px rgba(16,20,34,0.16);
+  --elev-primary: 0 6px 16px -6px rgba(30,64,175,0.45);
 
   /* Semantic status — never decorative */
   --destructive: #dc2626;
@@ -113,7 +120,7 @@
   --sidebar-foreground: #0e1422;
   --sidebar-primary: #1e40af;
   --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: #eef2fd; /* active = accent pill */
+  --sidebar-accent: #f0f3ff; /* active = accent pill */
   --sidebar-accent-foreground: #1e40af;
   --sidebar-border: #ecedf3;
   --sidebar-ring: #1e40af;
@@ -121,50 +128,56 @@
 
 /* ---- Dark (full companion: deep-navy canvas, lifted blue for AA) ----------- */
 .dark {
-  --background: #0a0f1c; /* deep navy canvas */
-  --foreground: #e8ebf2;
-  --card: #111827; /* lifted surface */
-  --card-foreground: #e8ebf2;
-  --popover: #111827;
-  --popover-foreground: #e8ebf2;
+  --background: #0a0d14; /* deep navy canvas */
+  --foreground: #eff1f5;
+  --card: #11151d; /* lifted surface */
+  --card-foreground: #eff1f5;
+  --popover: #151923;
+  --popover-foreground: #eff1f5;
 
-  --primary: #3b82f6; /* lifted blue for AA on dark */
-  --primary-foreground: #f8faff;
+  --primary: #5b89f5; /* lifted blue for AA on dark */
+  --primary-foreground: #0c1322;
 
-  --secondary: #1e293b;
-  --secondary-foreground: #e8ebf2;
-  --muted: #1a2436;
-  --muted-foreground: #94a3b8;
-  --accent: #172554; /* deep blue tint */
-  --accent-foreground: #93c5fd;
+  --secondary: #1f232e;
+  --secondary-foreground: #eff1f5;
+  --muted: #1f232e;
+  --muted-foreground: #96a0b0;
+  --accent: #1a2442; /* blue-tinted active surface */
+  --accent-foreground: #a8c1fa;
 
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: #3b82f6;
+  --border: #242932;
+  --input: #292d38;
+  --ring: #5b89f5;
 
-  --destructive: #f87171;
-  --destructive-foreground: #0a0f1c;
-  --success: #22c55e;
-  --success-foreground: #04120a;
-  --warning: #fbbf24;
-  --warning-foreground: #1a1204;
-  --info: #60a5fa;
-  --info-foreground: #04101f;
+  /* Dark elevation: deeper ambient + faint top highlight via border */
+  --elev-1: 0 1px 2px rgba(0,0,0,0.4);
+  --elev-2: 0 1px 2px rgba(0,0,0,0.4), 0 14px 30px -18px rgba(0,0,0,0.7);
+  --elev-3: 0 10px 30px -10px rgba(0,0,0,0.7);
+  --elev-primary: 0 6px 18px -6px rgba(40,90,230,0.55);
 
-  --chart-1: #60a5fa;
-  --chart-2: #3b82f6;
+  --destructive: #e44e4e;
+  --destructive-foreground: #ffffff;
+  --success: #32bd7a;
+  --success-foreground: #ffffff;
+  --warning: #f4992a;
+  --warning-foreground: #0c1322;
+  --info: #608ef0;
+  --info-foreground: #0c1322;
+
+  --chart-1: #608ef0;
+  --chart-2: #5b89f5;
   --chart-3: #2563eb;
   --chart-4: #93c5fd;
   --chart-5: #c7d2fe;
 
-  --sidebar: #0d1424;
-  --sidebar-foreground: #e8ebf2;
-  --sidebar-primary: #3b82f6;
-  --sidebar-primary-foreground: #f8faff;
-  --sidebar-accent: #172554;
-  --sidebar-accent-foreground: #93c5fd;
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: #3b82f6;
+  --sidebar: #0a0d14;
+  --sidebar-foreground: #eff1f5;
+  --sidebar-primary: #5b89f5;
+  --sidebar-primary-foreground: #0c1322;
+  --sidebar-accent: #1a2442;
+  --sidebar-accent-foreground: #a8c1fa;
+  --sidebar-border: #242932;
+  --sidebar-ring: #5b89f5;
 }
 
 @layer base {

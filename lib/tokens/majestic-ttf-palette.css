@@ -1,0 +1,37 @@
+/* Majestic Topical Trust Flow — fixed categorical DATA palette.
+   16 parents; children inherit parent hex. Use ONLY on data marks
+   (TTF badges, distribution bars, category charts) — never on UI chrome. */
+:root{
+  --ttf-adult: #333333;
+  --ttf-adult-on: #FFFFFF;
+  --ttf-arts: #FF6700;
+  --ttf-arts-on: #FFFFFF;
+  --ttf-business: #C5C88E;
+  --ttf-business-on: #000000;
+  --ttf-computers: #DD3333;
+  --ttf-computers-on: #FFFFFF;
+  --ttf-games: #557832;
+  --ttf-games-on: #FFFFFF;
+  --ttf-health: #000099;
+  --ttf-health-on: #FFFFFF;
+  --ttf-home: #DD9955;
+  --ttf-home-on: #000000;
+  --ttf-news: #76D54B;
+  --ttf-news-on: #000000;
+  --ttf-recreation: #89C7CB;
+  --ttf-recreation-on: #000000;
+  --ttf-reference: #C84770;
+  --ttf-reference-on: #FFFFFF;
+  --ttf-regional: #F582B9;
+  --ttf-regional-on: #000000;
+  --ttf-science: #6BD39A;
+  --ttf-science-on: #000000;
+  --ttf-shopping: #660000;
+  --ttf-shopping-on: #FFFFFF;
+  --ttf-society: #7A69CD;
+  --ttf-society-on: #FFFFFF;
+  --ttf-sports: #55355D;
+  --ttf-sports-on: #FFFFFF;
+  --ttf-world: #557777;
+  --ttf-world-on: #FFFFFF;
+}
