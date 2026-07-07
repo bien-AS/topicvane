@@ -1,9 +1,8 @@
 "use client";
 
-import * as React from "react";
+import { useTheme } from "@/components/theme-provider";
 import { Button } from "@/components/ui/button";
 import { Icons } from "@/lib/icons";
-import { useTheme } from "@/components/theme-provider";
 
 /**
  * Icon button that flips between light and dark. The icon is driven purely by the `.dark`
@@ -23,8 +22,14 @@ export function ThemeToggle({ className }: { className?: string }) {
       title="Toggle light/dark theme"
       className={className}
     >
-      <Icons.moon className="dark:hidden" aria-hidden />
-      <Icons.sun className="hidden dark:block" aria-hidden />
+      <Icons.moon
+        className="dark:hidden"
+        aria-hidden
+      />
+      <Icons.sun
+        className="hidden dark:block"
+        aria-hidden
+      />
     </Button>
   );
 }

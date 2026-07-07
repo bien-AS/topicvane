@@ -1,0 +1,1 @@
+biome check && vitest run && next build

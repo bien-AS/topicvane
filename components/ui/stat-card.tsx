@@ -1,35 +1,35 @@
-"use client"
+"use client";
 
-import * as React from 'react'
-import type { LucideIcon } from 'lucide-react'
-import { cn } from '@/lib/utils'
-import { Card } from '@/components/ui/card'
-import { useCountUp } from '@/lib/use-count-up'
+import type { LucideIcon } from "lucide-react";
+import * as React from "react";
+import { Card } from "@/components/ui/card";
+import { useCountUp } from "@/lib/use-count-up";
+import { cn } from "@/lib/utils";
 
 /** StatCard — a KPI tile: label-caps + a large tabular metric (counts up on
  *  mount) + an optional delta and a sparkline slot. Numeric values animate via
  *  GSAP and respect reduced-motion. */
 export interface StatCardDelta {
-  value: string
-  direction?: 'up' | 'down'
-  tone?: 'success' | 'error' | 'neutral'
+  value: string;
+  direction?: "up" | "down";
+  tone?: "success" | "error" | "neutral";
 }
 
 export interface StatCardProps extends React.HTMLAttributes<HTMLDivElement> {
-  label: string
-  value: number | string
-  format?: (v: number) => string
-  suffix?: string
-  icon?: LucideIcon
-  delta?: StatCardDelta
-  sparkline?: React.ReactNode
+  label: string;
+  value: number | string;
+  format?: (v: number) => string;
+  suffix?: string;
+  icon?: LucideIcon;
+  delta?: StatCardDelta;
+  sparkline?: React.ReactNode;
 }
 
-const deltaToneClass: Record<NonNullable<StatCardDelta['tone']>, string> = {
-  success: 'text-success',
-  error: 'text-destructive',
-  neutral: 'text-muted-foreground',
-}
+const deltaToneClass: Record<NonNullable<StatCardDelta["tone"]>, string> = {
+  success: "text-success",
+  error: "text-destructive",
+  neutral: "text-muted-foreground",
+};
 
 export function StatCard({
   label,
@@ -42,12 +42,15 @@ export function StatCard({
   className,
   ...props
 }: StatCardProps) {
-  const isNumeric = typeof value === 'number'
-  const numRef = useCountUp<HTMLSpanElement>(isNumeric ? (value as number) : 0, { format })
-  const tone = delta?.tone ?? (delta?.direction === 'down' ? 'error' : 'success')
+  const isNumeric = typeof value === "number";
+  const numRef = useCountUp<HTMLSpanElement>(isNumeric ? (value as number) : 0, { format });
+  const tone = delta?.tone ?? (delta?.direction === "down" ? "error" : "success");
 
   return (
-    <Card className={cn('p-5', className)} {...props}>
+    <Card
+      className={cn("p-5", className)}
+      {...props}
+    >
       <div className="flex items-center justify-between">
         <span className="font-heading text-[11px] font-semibold uppercase tracking-[0.05em] text-muted-foreground">
           {label}
@@ -59,16 +62,23 @@ export function StatCard({
           <span className="font-heading text-[1.625rem] font-bold leading-none tabular-nums text-foreground">
             {isNumeric ? <span ref={numRef}>0</span> : value}
           </span>
-          {suffix && <span className="text-[13px] font-medium text-muted-foreground">{suffix}</span>}
+          {suffix && (
+            <span className="text-[13px] font-medium text-muted-foreground">{suffix}</span>
+          )}
         </div>
         {sparkline && <div className="h-8 w-24 shrink-0">{sparkline}</div>}
       </div>
       {delta && (
-        <div className={cn('mt-2 inline-flex items-center gap-1 text-[12px] font-medium tabular-nums', deltaToneClass[tone])}>
-          <span aria-hidden>{delta.direction === 'down' ? '▼' : '▲'}</span>
+        <div
+          className={cn(
+            "mt-2 inline-flex items-center gap-1 text-[12px] font-medium tabular-nums",
+            deltaToneClass[tone],
+          )}
+        >
+          <span aria-hidden>{delta.direction === "down" ? "▼" : "▲"}</span>
           {delta.value}
         </div>
       )}
     </Card>
-  )
+  );
 }

@@ -1,6 +1,6 @@
 import * as React from "react";
-import { cn } from "@/lib/utils";
 import { getTtfColor, getTtfParent } from "@/lib/tokens/majestic-ttf";
+import { cn } from "@/lib/utils";
 
 /*
   Majestic Topical Trust Flow chip — a DATA MARK, so it carries the category's own color
@@ -18,16 +18,10 @@ export interface TtfBadgeProps extends React.ComponentProps<"span"> {
   parentOnly?: boolean;
 }
 
-function TtfBadge({
-  topic,
-  value,
-  parentOnly = false,
-  className,
-  ...props
-}: TtfBadgeProps) {
+function TtfBadge({ topic, value, parentOnly = false, className, ...props }: TtfBadgeProps) {
   const { hex, on } = getTtfColor(topic);
   const parent = getTtfParent(topic);
-  const label = parentOnly ? parent ?? topic : topic;
+  const label = parentOnly ? (parent ?? topic) : topic;
 
   return (
     <span
@@ -35,14 +29,17 @@ function TtfBadge({
       title={topic}
       className={cn(
         "inline-flex items-center gap-1.5 rounded-md px-2 py-0.5 text-xs font-semibold font-heading whitespace-nowrap",
-        className
+        className,
       )}
       style={{ backgroundColor: hex, color: on }}
       {...props}
     >
       <span className="max-w-[16ch] truncate">{label}</span>
       {value !== undefined && (
-        <span className="tabular font-bold" style={{ color: on }}>
+        <span
+          className="tabular font-bold"
+          style={{ color: on }}
+        >
           {value}
         </span>
       )}

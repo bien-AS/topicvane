@@ -17,7 +17,7 @@ function Card({
         "flex flex-col gap-6 rounded-lg border border-border bg-card py-6 text-card-foreground shadow-xs",
         interactive &&
           "cursor-pointer transition-shadow transition-colors hover:border-primary/30 hover:shadow-md",
-        className
+        className,
       )}
       {...props}
     />
@@ -30,7 +30,7 @@ function CardHeader({ className, ...props }: React.ComponentProps<"div">) {
       data-slot="card-header"
       className={cn(
         "grid auto-rows-min grid-rows-[auto_auto] items-start gap-1 px-6 has-data-[slot=card-action]:grid-cols-[1fr_auto]",
-        className
+        className,
       )}
       {...props}
     />
@@ -69,7 +69,11 @@ function CardAction({ className, ...props }: React.ComponentProps<"div">) {
 
 function CardContent({ className, ...props }: React.ComponentProps<"div">) {
   return (
-    <div data-slot="card-content" className={cn("px-6", className)} {...props} />
+    <div
+      data-slot="card-content"
+      className={cn("px-6", className)}
+      {...props}
+    />
   );
 }
 
@@ -83,12 +87,4 @@ function CardFooter({ className, ...props }: React.ComponentProps<"div">) {
   );
 }
 
-export {
-  Card,
-  CardHeader,
-  CardFooter,
-  CardTitle,
-  CardAction,
-  CardDescription,
-  CardContent,
-};
+export { Card, CardAction, CardContent, CardDescription, CardFooter, CardHeader, CardTitle };
