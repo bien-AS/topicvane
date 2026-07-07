@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 
 export default function Home() {
@@ -13,7 +14,9 @@ export default function Home() {
           height={20}
           priority
         />
-        <Button>Click me</Button>
+        <Button asChild>
+          <Link href="/gallery">View component gallery</Link>
+        </Button>
         <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
           <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
             To get started, edit the page.tsx file.
